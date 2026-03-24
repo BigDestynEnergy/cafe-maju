@@ -1,6 +1,6 @@
 import Header from "./Header";
 import '../styles/home.css'
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 
 const appetizers = [
@@ -60,6 +60,8 @@ const find = [
  {label: 'Contact', svg: <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-phone text-primary"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 , des: '+265990000000, hello@majucafe.com'}
 ]
+
+const [list, setList] = useState([])
     return(
         <div className="cafe-component">
             <Header scrollToSection={scrollToSection}/>
@@ -72,7 +74,7 @@ const find = [
             </div>
 
             <div className="hero-menu" ref={menuRef}>
-                <button className="checkout">Place Orders ({0})</button>
+                <button className="checkout">Place Orders ({list.length})</button>
 
                 <h2 className="ht">Our Menu</h2>
                 <span>Simple, fresh, and made with care every day.</span>
@@ -83,7 +85,9 @@ const find = [
                     {appetizers.map((appetize, index) => {
 
                         return(
-                            <div className="container" key={index}>
+                            <div className="container" 
+                            onClick={()=>setList(prev => [...prev, appetize])}
+                            key={index}>
                                 <span>{appetize.label}</span>
                                 <span>MWK{appetize.price}</span>
                             </div>
@@ -96,7 +100,9 @@ const find = [
                     {salads.map((salad, index) => {
 
                         return(
-                            <div className="container" key={index}>
+                            <div className="container"
+                            onClick={()=>setList(prev => [...prev, salad])}
+                            key={index}>
                                 <span>{salad.label}</span>
                                 <span>MWK{salad.price}</span>
                             </div>
@@ -109,7 +115,9 @@ const find = [
                     {roadrunner.map((road, index) => {
 
                         return(
-                            <div className="container" key={index}>
+                            <div className="container" 
+                            onClick={()=>setList(prev => [...prev, road])}
+                            key={index}>
                                 <span>{road.label}</span>
                                 <span>MWK{road.price}</span>
                             </div>
@@ -122,7 +130,9 @@ const find = [
                     {lake.map((fresh, index) => {
 
                         return(
-                            <div className="container" key={index}>
+                            <div className="container" 
+                            onClick={()=>setList(prev => [...prev, fresh])}
+                            key={index}>
                                 <span>{fresh.label}</span>
                                 <span>MWK{fresh.price}</span>
                             </div>
@@ -137,7 +147,9 @@ const find = [
                     {italiano.map((italian, index) => {
 
                         return(
-                            <div className="container" key={index}>
+                            <div className="container"
+                            onClick={()=>setList(prev => [...prev, italian])}
+                            key={index}>
                                 <span className="label">{italian.label}</span>
                                 <span className="price">MWK{italian.price}</span>
                             </div>
@@ -150,7 +162,9 @@ const find = [
                     {maju.map((maj, index) => {
 
                         return(
-                            <div className="container" key={index}>
+                            <div className="container"
+                            onClick={()=>setList(prev => [...prev, maj])}
+                            key={index}>
                                 <span>{maj.label}</span>
                                 <span>MWK{maj.price}</span>
                             </div>
@@ -190,6 +204,8 @@ const find = [
                 <h3>Cafe <span>Maju</span></h3>
                 <span>© 2026 Cafe Magu. All rights reserved.</span>
             </footer>
+
+            
         </div>
     )
 }
