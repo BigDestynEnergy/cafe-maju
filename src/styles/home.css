@@ -1,3 +1,17 @@
+/* GLOBAL FIX (NON-NEGOTIABLE) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* STOP SIDE SCROLL */
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* HERO */
 .hero{
     border: 1px solid #000;
     height: 570px;
@@ -12,24 +26,40 @@
     margin-top: 82px;
     color: white;
     position: relative;
-
+    width: 100%;
 }
+
+.cafe-component{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+}
+
 
 .content{
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0,0,0,0.6);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 16px;
+    text-align: center;
 }
 
-.content h1{font-size: 5em; font-family: 'Times New Roman', Times, serif; cursor: pointer;}
-.content span{color: #cacaca;opacity: 0.7;}
+.content h1{
+    font-size: 5em;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    max-width: 100%;
+}
+
+.content span{
+    color: #cacaca;
+    opacity: 0.7;
+}
 
 .content button{
     padding: 12px;
@@ -44,78 +74,82 @@
     transition: all 0.3s ease;
 }
 
-.content button:hover{background: #ee7104;}
+.content button:hover{
+    background: #ee7104;
+}
 
+/* HERO MENU */
 .hero-menu{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-     position: relative;
     margin-top: 30px;
+    width: 100%;
 }
 
 .ht{
     font-family: 'Times New Roman', Times, serif;
     font-size: 4em;
     font-weight: 500;
-
+    text-align: center;
 }
 
+/* GRID FIX */
 .menu-categories{
     width: 100%;
-   
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 20px; /* reduced from 40px (was too aggressive) */
     padding: 12px;
-    align-items: center;
-    justify-content: center;
 }
 
+/* ITEMS */
 .appetizers{
     display: flex;
     flex-direction: column;
     gap: 4px;
+    width: 100%;
 }
-
-* {
-  outline: 1px solid red;
-}
-
 
 .appetizers h2{
     color: #ff7600;
-    font-family: 'Times New Roman', Times, serif; font-size: 2em;}
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+}
 
 .appetizers .container{
     display: flex;
     justify-content: space-between;
     padding: 8px;
-    border-bottom: 2px solid #cacaca;
-    border-bottom-style: dotted;
+    border-bottom: 2px dotted #cacaca;
     transition: all 0.3s ease;
     cursor: pointer;
+    width: 100%;
 }
 
 .container:hover{
     background: #ebe9e9;
 }
 
-
-.location{width: 100%;
-display: flex;
-margin-top: 60px;
-flex-direction: column;align-items: center;
-justify-content: center;}
+/* LOCATION */
+.location{
+    width: 100%;
+    display: flex;
+    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .location .cards{
     display: flex;
     gap: 20px;
-    padding: 24px;
+    padding: 16px; /* reduced */
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* FIXED (no more space-between overflow) */
+    flex-wrap: wrap; /* THIS SAVES YOU */
 }
 
 .location .cards .card{
@@ -125,12 +159,16 @@ justify-content: center;}
     gap: 4px;
 }
 
-.cards .card svg{background: #ff770069; height: 50px; width: 50px; color: #ff7600;
-border-radius: 8px;
-cursor: pointer;
+.cards .card svg{
+    background: #ff770069;
+    height: 50px;
+    width: 50px;
+    color: #ff7600;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-
+/* FOOTER */
 footer{
     padding: 24px;
     display: flex;
@@ -138,43 +176,51 @@ footer{
     flex-direction: column;
     justify-content: center;
     background: #ececec;
+    width: 100%;
 }
 
-footer h3 span{color: #ff7600;}
+footer h3 span{
+    color: #ff7600;
+}
 
+/* TABLET */
 @media(max-width: 800px){
     .menu-categories{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* MOBILE */
 @media(max-width: 568px){
+
     .menu-categories{
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
     }
 
-      .content h1{
+    .content h1{
         font-size: 2.5em;
-        text-align: center;
     }
 
     .ht{
         font-size: 2.5em;
+    }
+
+    .hero-menu h2{
+        font-size: 2em;
         text-align: center;
     }
 
-    .hero-menu h2{font-size: 3em;}
-
-   .appetizers h2{font-size: 2.4em;}
-    .location .cards{
-        flex-direction: column;
-        gap: 40px;
-        padding: 16px;
+    .appetizers h2{
+        font-size: 1.8em;
     }
 
- 
+    .location .cards{
+        flex-direction: column;
+        gap: 30px;
+    }
 }
 
+/* ABOUT */
 .about{
     display: flex;
     flex-direction: column;
@@ -184,6 +230,9 @@ footer h3 span{color: #ff7600;}
     padding: 24px;
     gap: 4px;
     background: #f3f3f3;
+    width: 100%;
 }
 
-.about h2{color: #ff7600;}
+.about h2{
+    color: #ff7600;
+}
