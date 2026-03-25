@@ -11,8 +11,11 @@ justify-content: center;
 flex-direction: column;
 position: fixed;
 left: 0;
+padding: 8px;
+border-bottom: 1px solid #333;
 right: 0;
 top: 0;
+z-index: 5;
 }
 
 .tab{
@@ -28,10 +31,12 @@ top: 0;
 .tab:hover{color: #ff7600;}
 
 .menu{display: none; cursor: pointer;}
-.left{display: flex; align-items: center; position: absolute; right: 10px; top: 20px;}
+.cart{display: flex; align-items: center;
+    cursor: pointer;
+     position: absolute; right: 0; margin-right: 20px; margin-top: 6px;}
+.cart span{color: white; background: #ff7600; width: 20px; font-size: 14px; text-align: center; border-radius: 24px; position: absolute; top: -14px; left: 4px;}
 
 
 @media (max-width: 568px){
     header{flex-direction: column;}
-    .menu{display: flex;}
 }

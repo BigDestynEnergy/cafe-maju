@@ -1,6 +1,7 @@
 import Header from "./Header";
 import "../styles/home.css";
 import { useRef, useState } from "react";
+import Orders from "../components/Orders";
 
 /* ---------------- DATA (cleaned) ---------------- */
 
@@ -54,41 +55,13 @@ export default function Cafe() {
   };
 
   /* ---------------- STATE ---------------- */
-  const [openModal, setOpenModal] = useState(false);
   const [list, setList] = useState([]);
+  const [openOrders, setOpenOrders] = useState(false)
 
   /* ---------------- HELPERS ---------------- */
-  const total = list.reduce((acc, item) => acc + item.price, 0);
+ const formatMWK = (num) => `MWK${num.toLocaleString()}`;
 
-  const formatMWK = (num) => `MWK${num.toLocaleString()}`;
 
-const generateWhatsAppMessage = (order) => {
-  let message = "Hello, I'd like to order:\n\n";
-
-  order.forEach((item) => {
-    message += `• ${item.label} - ${formatMWK(item.price)}\n`;
-  });
-
-  message += `\nTotal: ${formatMWK(total)}\n`;
-  message += `Name & Last Name: [Insert Your Name]\n`;
-  message += `Expected Time for Meal: [Insert Time]`;
-
-  // encode the entire message for WhatsApp URL
-  return encodeURIComponent(message);
-};
-
-  const sendToWhatsApp = () => {
-    if (list.length === 0) return;
-
-    const phone = "265998833172";
-    const message = generateWhatsAppMessage(list);
-
-    window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
-
-    // reset after sending
-    setList([]);
-    setOpenModal(false);
-  };
 
   /* ---------------- LOCATION DATA ---------------- */
   const find = [
@@ -122,6 +95,7 @@ const generateWhatsAppMessage = (order) => {
     <div className="cafe-component">
       <Header 
       list={list}
+      openSidebar={setOpenOrders}
       scrollToSection={scrollToSection} />
 
       {/* HERO */}
@@ -135,9 +109,7 @@ const generateWhatsAppMessage = (order) => {
 
       {/* MENU */}
       <div className="hero-menu" ref={menuRef}>
-        <button onClick={() => setOpenModal(true)} className="checkout">
-          Place Orders ({list.length})
-        </button>
+      
 
         <h2 className="ht">Our Menu</h2>
         <span>Simple, fresh, and made with care every day.</span>
@@ -163,7 +135,22 @@ const generateWhatsAppMessage = (order) => {
                   <div
                     className='container'
                     key={index}
-                    onClick={() => {setList((prev) => [...prev, item])}}
+                    
+                  onClick={() => {
+                      setList(prev => {
+                        const existing = prev.find(i => i.label === item.label)
+
+                        if (existing) {
+                          return prev.map(i =>
+                            i.label === item.label
+                              ? { ...i, quantity: i.quantity + 1 }
+                              : i
+                          )
+                        }
+
+                        return [...prev, { ...item, quantity: 1 }]
+                      })
+                    }}
                   >
                     <span>{item.label}</span>
                     <span>{formatMWK(item.price)}</span>
@@ -208,38 +195,10 @@ const generateWhatsAppMessage = (order) => {
         </h3>
         <span>© 2026 Cafe Maju. All rights reserved.</span>
       </footer>
-
-      {/* MODAL */}
-      {openModal && (
-        <div className="modal">
-          <div className="modal-box">
-            <span className="close" onClick={() => setOpenModal(false)}>
-              ✕
-            </span>
-
-            <h2>Checkout</h2>
-
-            {list.length === 0 ? (
-              <p>No items selected</p>
-            ) : (
-              <>
-                {list.map((item, index) => (
-                  <div className="container" key={index}>
-                    <span>{item.label}</span>
-                    <span>{formatMWK(item.price)}</span>
-                  </div>
-                ))}
-
-                <h3>Total: {formatMWK(total)}</h3>
-
-                <button className="confirm" onClick={sendToWhatsApp}>
-                  Confirm & Send via WhatsApp
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      {openOrders && (<Orders 
+      openSidebar={setOpenOrders}
+      setList={setList} 
+      list={list}/>)}
     </div>
   );
 }
