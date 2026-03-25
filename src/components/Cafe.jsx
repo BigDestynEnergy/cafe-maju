@@ -45,6 +45,7 @@ export default function Cafe() {
   const homeRef = useRef(null);
   const menuRef = useRef(null);
   const locationRef = useRef(null);
+  const aboutRef = useRef(null)
 
   const scrollToSection = (index) => {
     const sections = [homeRef, menuRef, locationRef];
@@ -161,6 +162,17 @@ export default function Cafe() {
           )}
         </div>
       </div>
+
+      {/* About Us*/}
+
+      <div className="about" ref={aboutRef}>
+        <h2>A Little Bit About Us</h2>
+          <p>Our goal is to provide leisure and special place just for you.</p>
+          <p>Whether you're meeting with the girls for a friendly date,</p>
+          <p>Whether you're meeting your boss for that promotion,</p>
+          <p>Whether you're trying to unwind from the everyday woes,</p>
+          <p>We're here. Just for you!</p>
+       </div>
 
       {/* LOCATION */}
       <div className="location" ref={locationRef}>

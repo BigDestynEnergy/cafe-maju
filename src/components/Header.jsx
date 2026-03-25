@@ -3,7 +3,7 @@ import '../styles/header.css'
 
 
 export default function Header({ scrollToSection, list, openSidebar }){
-    const tabs = ["Home", "Menu", "Location", "Events"]
+    const tabs = ["Home", "Menu","Location", "Events"]
     const [click, setClick] = useState(0)
     return(
         <header>
