@@ -1,62 +1,37 @@
-
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px;
-    z-index: 5;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #cacaca;
-}
-
-header h1{font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
-header h1 span{color: #ff7600;}
-
-.tabs{
-    display: flex;gap: 8px;
-}
-
-.tab, .tab-menu{
-    padding: 6px;
-    font-family: inherit;
-    font-weight: 500;
-    background: transparent;
-    border: none;
+.All, .tab{
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #686565;
 }
 
-.tab:hover, .tab-menu:hover{color: #ff7600;}
 
+header{background: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+position: fixed;
+left: 0;
+right: 0;
+top: 0;
+}
+
+.tab{
+    padding: 8px;
+    font-family: inherit;
+    font-weight: 500;
+    color: #333;
+    border: none;
+    border-radius: 24px;
+    background: none;
+}
 .active{color: #ff7600;}
-.menu{display: none;}
+.tab:hover{color: #ff7600;}
 
+.menu{display: none; cursor: pointer;}
+.left{display: flex; align-items: center; position: absolute; right: 10px; top: 20px;}
 
 
 @media (max-width: 568px){
-    .tabs{display: none;}
-    .menu{display: flex; cursor: pointer;}
-
-    .tabs-menu{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 64px;
-    width: 100px;
-    border-radius: 8px;
-    right: 20px;
-    align-items: center;
-    border: 1px solid #686565;
-    animation: enter 0.3s ease forwards;
-}
-}
-
-@keyframes enter{
-    from{opacity: 0; transform: translateY(10px)}
-    to{opacity: 1; transform: translateY(0px);}
+    header{flex-direction: column;}
+    .menu{display: flex;}
 }
