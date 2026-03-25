@@ -58,6 +58,7 @@ export default function Cafe() {
   /* ---------------- STATE ---------------- */
   const [list, setList] = useState([]);
   const [openOrders, setOpenOrders] = useState(false)
+  const [added, setAdded] = useState([])
 
   /* ---------------- HELPERS ---------------- */
  const formatMWK = (num) => `MWK${num.toLocaleString()}`;
@@ -141,24 +142,64 @@ export default function Cafe() {
                     <div className="lefty">
                       
                     <span>{formatMWK(item.price)}</span>
-                    <svg 
-                    
-                              onClick={() => {
-                      setList(prev => {
-                        const existing = prev.find(i => i.label === item.label)
+                    {added.includes(item.label) ? (
+  <svg
+    onClick={() => {
+     
+      setList(prev => prev.filter(i => i.label !== item.label));
 
-                        if (existing) {
-                          return prev.map(i =>
-                            i.label === item.label
-                              ? { ...i, quantity: i.quantity + 1 }
-                              : i
-                          )
-                        }
+      
+      setAdded(prev => prev.filter(label => label !== item.label));
+    }}
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-check"
+  >
+    <path d="M20 6L9 17l-5-5"></path>
+  </svg>
+) : (
+  <svg
+    onClick={() => {
+    
+      setList(prev => {
+        const existing = prev.find(i => i.label === item.label);
 
-                        return [...prev, { ...item, quantity: 1 }]
-                      })
-                    }}
-                    xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+        if (existing) {
+          return prev.map(i =>
+            i.label === item.label
+              ? { ...i, quantity: i.quantity + 1 }
+              : i
+          );
+        }
+
+        return [...prev, { ...item, quantity: 1 }];
+      });
+
+    
+      setAdded(prev => [...prev, item.label]);
+    }}
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="lucide lucide-plus"
+  >
+    <path d="M5 12h14"></path>
+    <path d="M12 5v14"></path>
+  </svg>
+)}
                     </div>
                   </div>
               
