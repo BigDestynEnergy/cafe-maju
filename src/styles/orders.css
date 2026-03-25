@@ -6,6 +6,7 @@
     background: white;
     bottom: 0;
     left: 0;
+    overflow-x: hidden;
     background: rgba(0,0,0,0.6);
 }
 
@@ -15,6 +16,7 @@
     right: 0;
     top: 0;
     bottom: 0;
+    overflow-x: hidden;
     background: white;
     display: flex;
     flex-direction: column;
@@ -87,5 +89,5 @@ padding: 8px;}
 }
 
 @media (max-width: 568px){
-    .order-card{width: 360px;}
+    .order-card{width: 300px;}
 }
