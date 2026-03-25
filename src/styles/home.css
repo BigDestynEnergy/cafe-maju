@@ -161,7 +161,22 @@ body {
     gap: 4px;
 }
 
-
+.note{
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin-top: 90px;
+    margin-right: 10px;
+    animation: slide 0.3s ease;
+    width: 200px;
+    background: #ff7600;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 20;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
 
 .cards .card svg{
     background: #ff770069;
@@ -199,6 +214,10 @@ footer h3 span{
 
     .menu-categories{
         grid-template-columns: 1fr;
+    }
+
+    .note{
+        margin-top: 120px;
     }
 
     .content h1{

@@ -46,6 +46,14 @@ export default function Cafe() {
   const menuRef = useRef(null);
   const locationRef = useRef(null);
   const aboutRef = useRef(null)
+  const [note, setNote] = useState('')
+
+  function showNote(msg){
+    setNote(msg)
+    setTimeout(() => {
+      setNote('')
+    }, 2000);
+  }
 
   const scrollToSection = (index) => {
     const sections = [homeRef, menuRef, locationRef];
@@ -133,6 +141,8 @@ export default function Cafe() {
                   }
                 </h2>
 
+                {note ? <span className="note">{note}</span> : ''}
+
                 {category.map((item, index) => (
                   <div
                     className='container'
@@ -148,7 +158,7 @@ export default function Cafe() {
      
       setList(prev => prev.filter(i => i.label !== item.label));
 
-      
+      showNote('Removed from order')
       setAdded(prev => prev.filter(label => label !== item.label));
     }}
     xmlns="http://www.w3.org/2000/svg"
@@ -178,6 +188,7 @@ export default function Cafe() {
               : i
           );
         }
+        showNote('Added to order')
 
         return [...prev, { ...item, quantity: 1 }];
       });
