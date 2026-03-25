@@ -80,6 +80,10 @@
     gap: 4px;
 }
 
+* {
+  outline: 1px solid red;
+}
+
 
 .appetizers h2{
     color: #ff7600;
@@ -149,11 +153,26 @@ footer h3 span{color: #ff7600;}
         grid-template-columns: repeat(1, 1fr);
     }
 
+      .content h1{
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+    .ht{
+        font-size: 2.5em;
+        text-align: center;
+    }
+
     .hero-menu h2{font-size: 3em;}
 
    .appetizers h2{font-size: 2.4em;}
+    .location .cards{
+        flex-direction: column;
+        gap: 40px;
+        padding: 16px;
+    }
 
-    .location .cards{flex-direction: column; gap: 40px;}
+ 
 }
 
 .about{
