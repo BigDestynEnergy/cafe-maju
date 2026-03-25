@@ -18,6 +18,8 @@ top: 0;
 z-index: 5;
 }
 
+h1 span{color: #ff7600;}
+
 .tab{
     padding: 8px;
     font-family: inherit;
