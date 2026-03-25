@@ -136,8 +136,14 @@ export default function Cafe() {
                   <div
                     className='container'
                     key={index}
+                  >
+                    <span>{item.label}</span>
+                    <div className="lefty">
+                      
+                    <span>{formatMWK(item.price)}</span>
+                    <svg 
                     
-                  onClick={() => {
+                              onClick={() => {
                       setList(prev => {
                         const existing = prev.find(i => i.label === item.label)
 
@@ -152,10 +158,10 @@ export default function Cafe() {
                         return [...prev, { ...item, quantity: 1 }]
                       })
                     }}
-                  >
-                    <span>{item.label}</span>
-                    <span>{formatMWK(item.price)}</span>
+                    xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </div>
                   </div>
+              
                 ))}
               </div>
             )
@@ -192,7 +198,8 @@ export default function Cafe() {
          
 
           <iframe
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.949763673937!2d35.0033493!3d-15.8066027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18d845006fb9a4db%3A0x4e51c5140f32808e!2sCafe%20Maju!5e0!3m2!1sen!2smw!4v1774360763705!5m2!1sen!2smw" width="600" 
+           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.949763673937!2d35.0033493!3d-15.8066027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18d845006fb9a4db%3A0x4e51c5140f32808e!2sCafe%20Maju!5e0!3m2!1sen!2smw!4v1774360763705!5m2!1sen!2smw"
+            width="450" 
             allowfullscreen="" loading="lazy"
             height="300"
             style={{ border: 0, borderRadius: "16px" }}

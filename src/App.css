@@ -13,3 +13,6 @@ body{
   font-family: system-ui;
   overflow-x: hidden;
 }
+
+.lefty svg{background: #ff7600; color: white;
+border-radius: 8px; margin-left: 4px;}
