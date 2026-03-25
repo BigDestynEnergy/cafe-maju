@@ -29,12 +29,13 @@
     to{opacity: 1; transform: translateX(0px);}
 }
 
-.close{position: absolute; top: 0;
+.close{position: absolute; top: 20px;
 right: 0;
 cursor: pointer;
 padding: 8px;}
 
 .order-card h2{color: #ff7600;
+    margin-top: 20px;
 }
 
 .orders{margin-top: 30px;
