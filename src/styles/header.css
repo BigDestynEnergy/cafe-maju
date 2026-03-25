@@ -43,4 +43,12 @@ h1 span{color: #ff7600;}
 
 
 @media (max-width: 568px){
+    header{
+        flex-direction: column;
+    }
+
+    .cart{
+        position: absolute;
+        left: 10px;
+    }
 }
