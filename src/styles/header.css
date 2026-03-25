@@ -8,10 +8,10 @@ header{background: #fff;
 display: flex;
 align-items: center;
 justify-content: center;
-flex-direction: column;
+flex-direction: row;
 position: fixed;
 left: 0;
-padding: 8px;
+padding: 24px;
 border-bottom: 1px solid #333;
 right: 0;
 top: 0;
@@ -32,11 +32,9 @@ z-index: 5;
 
 .menu{display: none; cursor: pointer;}
 .cart{display: flex; align-items: center;
-    cursor: pointer;
-     position: absolute; right: 0; margin-right: 20px; margin-top: 6px;}
+    cursor: pointer; position: relative;}
 .cart span{color: white; background: #ff7600; width: 20px; font-size: 14px; text-align: center; border-radius: 24px; position: absolute; top: -14px; left: 4px;}
 
 
 @media (max-width: 568px){
-    header{flex-direction: column;}
 }
